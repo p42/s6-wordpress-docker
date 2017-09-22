@@ -6,7 +6,9 @@
 
 ## Usage
 * Default values are provided for database name, user, password. These can be changed at runtime by running docker-compose and setting the appropriate variable values.
+
 ** Variables are:
+
 *** MYSQL_ROOT_PASSWORD_ENV
 *** MYSQL_DATABASE_ENV
 *** MYSQL_USER_ENV
