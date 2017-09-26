@@ -16,6 +16,17 @@ services:
       - mariadb
     depends_on:
       - mariadb
+    environment:
+      - URL_ENV=mydevsite.com
+      - MYSQL_DATABASE_ENV=wordpress
+      - MYSQL_USER_ENV=froot
+      - MYSQL_PASSWORD_ENV=froot
+      - DATABASE_PREFIX_ENV=wp_
+      #These are duplicates of the variables passed to the database container for db creation (if necessary)
+      #but are needed (and need to match) to set up the wp-config.php file
+      - MYSQL_DATABASE_ENV=wordpress
+      - MYSQL_ROOT_PASSWORD_ENV=root
+
 
   mariadb:
     container_name: mariadb
