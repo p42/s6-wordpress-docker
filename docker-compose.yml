@@ -3,8 +3,8 @@ version: '2'
 services:
 
   wordpress:
-    container_name: centos_wpcompose
-    image: local/centos-wp
+    container_name: centos_wordpress
+    image: project42/centos-s6-wordpress
     ports:
       - 80:80
       # - 443:443
@@ -12,13 +12,12 @@ services:
       - /tmp/wp-content/plugins:/var/www/html/wordpress/wp-content/plugins
       - /tmp/wp-content/themes:/var/www/html/wordpress/wp-content/themes
     restart: always
-    links:
-      - mariadb
+    external_links:
+      - mysql/external-mysql:mysql
     depends_on:
       - mariadb
     environment:
       - URL_ENV=mydevsite.com
-      - MYSQL_DATABASE_ENV=wordpress
       - MYSQL_USER_ENV=froot
       - MYSQL_PASSWORD_ENV=froot
       - DATABASE_PREFIX_ENV=wp_
