@@ -48,6 +48,11 @@ else
     echo "wp-content direcotry shows initilized file, not replacing mounted volume."
 fi
 
+#Lastly, make sure that our webserver has write permissions.
+chown nobody:apache -R /var/www/html/wordpress
+chmod 755 -R /var/www/html/wordpress
+chmod 775 -R /var/www/html/wordpress/wp-content
+
 # cd /tmp
 # if [ -d /var/www/html/wordpress/wp-content ]; then
 # 	echo "wp-content directory found, not overwriting";
