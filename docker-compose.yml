@@ -4,9 +4,9 @@ services:
 
   wordpress:
     container_name: centos_wordpress
-    image: project42/centos-s6-wordpress
+    image: project42/wordpress
     ports:
-      - 80:80
+      # - 80:80
       # - 443:443
     volumes:
       - /tmp/wp-content/plugins:/var/www/html/wordpress/wp-content/plugins
@@ -14,8 +14,8 @@ services:
     restart: always
     external_links:
       - mysql/external-mysql:mysql
-    depends_on:
-      - mariadb
+    # depends_on:
+    #   - mariadb
     environment:
       - URL_ENV=mydevsite.com
       - MYSQL_USER_ENV=froot
