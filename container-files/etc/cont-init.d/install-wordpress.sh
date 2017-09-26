@@ -39,7 +39,7 @@ EOF
 #     and we need to copy the /var/keep directory contents into that directory.
 # 4) Finish by creating a copied file as our flag.
 
-if [ !-e /var/www/html/wordpress/wp-content/initialized ]; then
+if [ ! -e /var/www/html/wordpress/wp-content/initialized ]; then
     #Do our stuff
     echo "wp-content directory found but not initialized. replacing mounted volume from /var/keep directory.";
     cp -r /var/keep/ /var/www/html/wordpress/wp-content/
