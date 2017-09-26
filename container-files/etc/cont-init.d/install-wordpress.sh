@@ -32,22 +32,28 @@ fi
  
 EOF
 
-cd /tmp
-if [ -d /var/www/html/wordpress/wp-content ]; then
-	echo "wp-content directory found, not overwriting";
-    ls /var/www/html/wordpress/wp-content/themes
-else
-	echo "wp-content directory not found, downloading";
-	wget https://wordpress.org/latest.tar.gz; tar -xzf latest.tar.gz; cp -r wordpress/w-content/ /var/www/html/wordpress/wp-content; rm -r wordpress; rm latest.tar.gz;
+# 1) Check the contents of /var/www/html/wordpress/wp-content for our copied file.
+# 2) If it exists, then this is not the first time we've created this instance and 
+#     therefore we do nothing.
+# 3) If it doesn't exist, then this is the first time we've created this instance
+#     and we need to copy the /var/keep directory contents into that directory.
+# 4) Finish by creating a copied file as our flag.
+
+if [ !-e /var/www/html/wordpress/wp-content/initialized ]; then
+    #Do our stuff
+    echo "wp-content directory found but not initialized. replacing mounted volume from /var/keep directory.";
+    cp -r /var/keep/ /var/www/html/wordpress/wp-content/
+    touch /var/www/html/wordpress/wp-content/initialized
+else 
+    echo "wp-content direcotry shows initilized file, not replacing mounted volume."
 fi
 
-#Make sure that apache has write permissions
-# echo "Variables not yet set"
+# cd /tmp
+# if [ -d /var/www/html/wordpress/wp-content ]; then
+# 	echo "wp-content directory found, not overwriting";
+#     ls /var/www/html/wordpress/wp-content/themes
+# else
+# 	echo "wp-content directory not found, downloading";
+# 	wget https://wordpress.org/latest.tar.gz; tar -xzf latest.tar.gz; cp -r wordpress/w-content/ /var/www/html/wordpress/wp-content; rm -r wordpress; rm latest.tar.gz;
+# fi
 
-#  MYSQL_ROOT_PASSWORD_ENV=${MYSQL_ROOT_PASSWORD:=root}
-#  MYSQL_DATABASE_ENV=${MYSQL_DATABASE:=wordpress}
-#  MYSQL_USER_ENV=${MYSQL_DATABASE:=froot}
-#  MYSQL_PASSWORD_ENV=${MYSQL_PASSWORD:=froot}
-#  DATABASE_PREFIX_ENV=${DATABASE_PREFIX:=wp_}
-
-#  echo ${MYSQL_ROOT_PASSWORD}
