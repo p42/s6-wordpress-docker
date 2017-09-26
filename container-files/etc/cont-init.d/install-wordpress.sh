@@ -42,7 +42,7 @@ EOF
 if [ ! -e /var/www/html/wordpress/wp-content/initialized ]; then
     #Do our stuff
     echo "wp-content directory found but not initialized. replacing mounted volume from /var/keep directory.";
-    cp -r /var/keep/ /var/www/html/wordpress/wp-content/
+    cp -r /var/keep/wp-content/* /var/www/html/wordpress/wp-content/
     touch /var/www/html/wordpress/wp-content/initialized
 else 
     echo "wp-content direcotry shows initilized file, not replacing mounted volume."

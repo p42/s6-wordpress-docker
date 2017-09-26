@@ -15,7 +15,7 @@ echo "$WP_MD5 *wordpress-$WP_VERSION.tar.gz" | md5sum -c - && \
 tar xzf wordpress-${WP_VERSION}.tar.gz -C /var/www/html/ && \
 rm -f wordpress-${WP_VERSION} && \
 mkdir /var/keep && \
-cp -r /var/www/html/wordpress/wp-content/ /var/keep/ && \
+cp -r /var/www/html/wordpress/wp-content/* /var/keep/ && \
 echo "Contents of keep directory" && \
 ls /var/keep && \
 # wget https://wordpress.org/latest.tar.gz  && \
