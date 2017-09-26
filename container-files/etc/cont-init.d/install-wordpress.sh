@@ -35,7 +35,7 @@ EOF
 cd /tmp
 if [ -d /var/www/html/wordpress/wp-content ]; then
 	echo "wp-content directory found, not overwriting";
-    ls /var/www/html/wordpress/wp-content
+    ls /var/www/html/wordpress/wp-content/themes
 else
 	echo "wp-content directory not found, downloading";
 	wget https://wordpress.org/latest.tar.gz; tar -xzf latest.tar.gz; cp -r wordpress/w-content/ /var/www/html/wordpress/wp-content; rm -r wordpress; rm latest.tar.gz;
