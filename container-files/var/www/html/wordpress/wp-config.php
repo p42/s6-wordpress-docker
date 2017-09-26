@@ -17,16 +17,15 @@
  *
  * @package WordPress
  */
-print_r($_SERVER);
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define('DB_NAME', (($_SEVER['MYSQL_DATABASE'])?$_SEVER['MYSQL_DATABASE']:'wordpress'));
+define('DB_NAME', (($_SERVER['MYSQL_DATABASE']) ? $_SEVER['MYSQL_DATABASE'] : 'wordpress'));
 
 /** MySQL database username */
-define('DB_USER', (($_SEVER['MYSQL_USER'])?$_SERVER['MYSQL_USER']:'froot'));
+define('DB_USER', (($_SERVER['MYSQL_USER'])?$_SERVER['MYSQL_USER']:'froot'));
 
 /** MySQL database password */
-define('DB_PASSWORD', (($_SEVER['MYSQL_PASSWORD'])? $_SERVER['MYSQL_PASSWORD']: 'froot'));
+define('DB_PASSWORD', (($_SERVER['MYSQL_PASSWORD'])? $_SERVER['MYSQL_PASSWORD']: 'froot'));
 
 /** MySQL hostname */
 define('DB_HOST', 'mysql');
