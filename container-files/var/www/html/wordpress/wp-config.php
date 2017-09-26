@@ -19,7 +19,7 @@
  */
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define('DB_NAME', (($_SERVER['MYSQL_DATABASE']) ? $_SEVER['MYSQL_DATABASE'] : 'wordpress'));
+define('DB_NAME', (($_SERVER['MYSQL_DATABASE']) ? $_SERVER['MYSQL_DATABASE'] : 'wordpress'));
 
 /** MySQL database username */
 define('DB_USER', (($_SERVER['MYSQL_USER'])?$_SERVER['MYSQL_USER']:'froot'));
