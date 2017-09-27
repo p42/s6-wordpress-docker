@@ -1,6 +1,8 @@
+#Build and test are stages that belong in the stages section below but aren't currently working.
+# - build
+# - test
+ 
 stages:
-  # - build
-  # - test
   - deploy
 
 variables:
