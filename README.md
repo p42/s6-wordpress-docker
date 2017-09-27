@@ -1,8 +1,8 @@
-# Creates a wordpress instance using Apache/PHP/Mariadb
+# Creates a wordpress instance using Apache/PHP. 
+## Does not inherently resolve the exernal dependency of a functional database.
 
 ## Dependencies
 * project42/apache
-* mariadb
 
 ## Usage
 * Default values are provided for database name, user, password. These can be changed at runtime by running docker-compose and setting the appropriate variable values.
