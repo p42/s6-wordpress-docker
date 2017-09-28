@@ -38,7 +38,7 @@ test:
     - docker
   stage: test
   script:
-    - docker run --rm "${IMAGE_NAME}:${IMAGE_TAG}" /bin/true
+    - docker run -e "HTML_DESTINATION=localhost/license.txt" -e "PHP_DESTINATION=localhost/test.php" --rm "${IMAGE_NAME}:${IMAGE_TAG}" /ci_tests/run_tests
   except:
     - master
 
