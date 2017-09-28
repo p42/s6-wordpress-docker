@@ -43,6 +43,15 @@ if [ ! -e /var/www/html/wordpress/wp-content/initialized ]; then
     #Do our stuff
     echo "wp-content directory found but not initialized. replacing mounted volume from /var/keep directory.";
     cp -r /var/keep/* /var/www/html/wordpress/wp-content/
+    cd /var/www/html/wordpress/wp-content
+    git init
+    git config --global user.email "bcone@esu10.org"
+    git config --global user.name "Docker Container"
+    #Ignore filemode changes
+    git config core.fileMode false
+    git add .
+    git commit -m 'Initial commit of source data'
+
     touch /var/www/html/wordpress/wp-content/initialized
 else 
     echo "wp-content direcotry shows initilized file, not replacing mounted volume."
