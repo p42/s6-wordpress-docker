@@ -1,0 +1,40 @@
+version: '2'
+volumes:
+  wordpress-data:
+    external: true
+    driver: rancher-nfs
+services:
+  crontab:
+    image: rancher/container-crontab:v0.2.0
+    working_dir: /var/www/html/wordpress/wp-content
+    labels:
+      cron.schedule: "0 0-59/5 * * * ?"
+      io.rancher.scheduler.affinity:host_label: role=worker
+      io.rancher.container.pull_image: always
+    volumes_from:
+    - wordpress2
+  wordpress2:
+    image: project42/wordpress
+    environment:
+      DATABASE_PREFIX_ENV: wp_
+      MYSQL_DATABASE_ENV: wordpress
+      MYSQL_PASSWORD_ENV: wordpress
+      MYSQL_USER_ENV: wordpress
+      URL_ENV: mydevsite.com
+    external_links:
+    - mysql/external-mysql:mysql
+    volumes:
+    - wordpress-data:/var/www/html/wordpress/wp-content/
+    labels:
+      io.rancher.container.pull_image: always
+      io.rancher.scheduler.affinity:host_label: role=worker
+      io.rancher.sidekicks: crontab
+  Wordpress-LB:
+    image: rancher/lb-service-haproxy:v0.7.5
+    ports:
+    - 10030:10030/tcp
+    labels:
+      io.rancher.scheduler.affinity:host_label: role=service
+      io.rancher.container.agent.role: environmentAdmin
+      io.rancher.container.create_agent: 'true'
+      io.rancher.scheduler.global: 'true'
