@@ -36,6 +36,13 @@ define('DB_CHARSET', 'utf8mb4');
 /** The Database Collate type. Don't change this if in doubt. */
 define('DB_COLLATE', '');
 
+/** 
+* Enable setting the default theme to something other than twentyseventeen.
+* Of course, this requires that theme be downloaded and available. 
+* Currently using the "School" theme.
+*/
+define('WP_DEFAULT_THEME', 'school');
+
 /**#@+
  * Authentication Unique Keys and Salts.
  *
@@ -89,3 +96,6 @@ require_once(ABSPATH . 'wp-settings.php');
 
 /** Sets up "direct method for WP auto-update w/o FTP*/
 define('FS_METHOD', 'direct');
+
+/** Default the lanuage to US English **/
+define('WPLANG', 'en_us');
