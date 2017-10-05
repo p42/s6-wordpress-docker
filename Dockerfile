@@ -19,8 +19,8 @@ mkdir /var/keep && \
 # This process completes in our install-wordpress.sh file.
 cp -r /var/www/html/wordpress/wp-content/* /var/keep/ && \
 wget https://downloads.wordpress.org/theme/school.1.4.5.zip && \
-tar xzf school.1.4.5.zip -C /var/keep/themes/ && \
-rm school.1.4.5.zip && \
+# tar xzf school.1.4.5.zip -C /var/keep/themes/ && \
+# rm school.1.4.5.zip && \
 echo "Contents of keep directory" && \
 ls /var/keep && \
 yum -y clean all

@@ -41,7 +41,7 @@ define('DB_COLLATE', '');
 * Of course, this requires that theme be downloaded and available. 
 * Currently using the "School" theme.
 */
-define('WP_DEFAULT_THEME', 'school');
+// define('WP_DEFAULT_THEME', 'school');
 
 /**#@+
  * Authentication Unique Keys and Salts.
