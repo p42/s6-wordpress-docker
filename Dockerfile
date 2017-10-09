@@ -7,7 +7,8 @@ MAINTAINER Brandon Cone bcone@esu10.org
 ENV WP_VERSION 4.8.2
 ENV WP_MD5 2e8744a702a3d9527782d9135a4c9544
 
-RUN yum install -y php56w-mysqlnd git  sendmail-cf sendmail && \
+# RUN yum install -y php56w-mysqlnd git  sendmail-cf sendmail && \
+RUN yum install -y php56w-mysqlnd git && \
 cd /tmp && \
 wget https://wordpress.org/wordpress-${WP_VERSION}.tar.gz && \
 echo "$WP_MD5 *wordpress-$WP_VERSION.tar.gz" | md5sum -c - && \
