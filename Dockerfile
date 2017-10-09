@@ -1,4 +1,4 @@
-FROM local/apache
+FROM project42/centos-apache
 MAINTAINER Brandon Cone bcone@esu10.org
 
 # Set up a wordpress instantiation. This is independent of a webserver, etc, even though it
