@@ -1,0 +1,6 @@
+#!/usr/bin/wit-contenv /bin/sh
+
+# Do the things needed (if any other than already set in configuration files) to 
+# start the sendmail service.
+
+/usr/sbin/sendmail -bD
