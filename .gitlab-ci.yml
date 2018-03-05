@@ -14,7 +14,7 @@ before_script:
 
 build-master:
   tags:
-    - ovirt
+    # - ovirt
     - docker
   stage: build
   script:
@@ -24,7 +24,7 @@ build-master:
 
 test-master:
   tags:
-    - ovirt
+    # - ovirt
     - docker
   stage: test
   script:
@@ -34,7 +34,7 @@ test-master:
 
 test:
   tags:
-    - ovirt
+    # - ovirt
     - docker
   stage: test
   script:
@@ -44,7 +44,7 @@ test:
 
 build:
   tags:
-    - ovirt
+    # - ovirt
     - docker
   stage: build
   script:
