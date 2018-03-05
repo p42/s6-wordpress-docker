@@ -69,7 +69,7 @@ define('NONCE_SALT',       '3Qg7|MMAxpA){-hd5A:>3 @*sMpicmZRa~{yTAU8u_=d]B/$ig q
  * You can have multiple installations in one database if you give each
  * a unique prefix. Only numbers, letters, and underscores please!
  */
-$table_prefix  = (($_SEVER['DATABASE_PREFIX'])? $_SERVER['DATABASE_PREFIX'] : 'wp_');
+$table_prefix  = (($_SERVER['DATABASE_PREFIX'])? $_SERVER['DATABASE_PREFIX'] : 'wp_');
 
 /**
  * For developers: WordPress debugging mode.
@@ -99,3 +99,9 @@ define('FS_METHOD', 'direct');
 
 /** Default the lanuage to US English **/
 define('WPLANG', 'en_us');
+
+
+// Clean up after ourselves.
+unset($_SERVER['MYSQL_DATABASE']);
+unset($_SERVER['MYSQL_USER']);
+unset($_SERVER['MYSQL_PASSWORD']);

@@ -19,13 +19,14 @@ if [ -d /etc/httpd/conf/vhosts ]; then
     #Do nothing
 else
     echo "CREATING VHOSTS DIRECTORY FROM WORDPRESS RUN SCRIPT"
-    mkdir /etc/httpd/conf/vhosts
+    mkdir -p /etc/httpd/conf/vhosts
 fi
- cat > /etc/httpd/conf/vhosts/vhost <<EOF
+
+ cat > /etc/httpd/conf.d/wp_vhost <<EOF
  <VirtualHost *:80>
-    ServerAdmin brandon@esu10.org
+    ServerAdmin nis@esu10.org
     DocumentRoot "/var/www/html/wordpress"
-    ServerName mydevsite.com
+    ServerName $DOMAIN_NAME
     # ErrorLog /var/www/logs/ErrorLog
     # AccessLog /var/www/logs/AccessLog
  </VirtualHost>

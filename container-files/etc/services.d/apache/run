@@ -1,0 +1,28 @@
+#!/usr/bin/with-contenv /bin/sh
+#We set default values to the environment variables that our container(s) will need.
+# This still isn't complete as the database name needs to also propagate to the database server
+# however since our db server will be persistent, it stands to reason all we'll be doing is passing
+# that information here to match what already exists there.
+
+if [ -d /etc/httpd/conf.d ]; then
+    echo "Vhosts directory exists"
+    #Do nothing
+else
+    echo "CREATING VHOSTS DIRECTORY FROM APACHE RUN SCRIPT"
+    mkdir /etc/httpd/conf.d
+fi
+
+if [ -z "$MYSQL_ROOT_PASSWORD_ENV" ]; then
+    echo "MYSQL_ROOT_PASSWORD_ENV not set, defaulting"
+    MYSQL_ROOT_PASSWORD_ENV='root'
+else
+    echo "MYSQL_ROOT_PASSWORD_ENV set ignoring"
+    MYSQL_ROOT_PASSWORD_ENV=${MYSQL_ROOT_PASSWORD_ENV}
+fi
+ # MYSQL_ROOT_PASSWORD_ENV=${MYSQL_ROOT_PASSWORD_ENV:=root}
+ MYSQL_DATABASE_ENV=${MYSQL_DATABASE_ENV:=wordpress}
+ MYSQL_USER_ENV=${MYSQL_USER_ENV:=froot}
+ MYSQL_PASSWORD_ENV=${MYSQL_PASSWORD_ENV:=froot}
+ DATABASE_PREFIX_ENV=${DATABASE_PREFIX_ENV:=wp_}
+
+/usr/sbin/httpd -DFOREGROUND -c "SetEnv MYSQL_USER $MYSQL_USER_ENV" -c "SetEnv MYSQL_ROOT_PASSWORD $MYSQL_ROOT_PASSWORD_ENV" -c "SetEnv MYSQL_DATABASE $MYSQL_DATABASE_ENV" -c "SetEnv MYSQL_PASSWORD $MYSQL_PASSWORD_ENV" -c "SetEnv MYSQL_DATABASE $MYSQL_DATABASE_ENV" -c "SetEnv DATABASE_PREFIX $DATABASE_PREFIX_ENV"
