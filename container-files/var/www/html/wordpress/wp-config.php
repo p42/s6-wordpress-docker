@@ -102,6 +102,6 @@ define('WPLANG', 'en_us');
 
 
 // Clean up after ourselves.
-unset($_SERVER['MYSQL_DATABASE']);
-unset($_SERVER['MYSQL_USER']);
-unset($_SERVER['MYSQL_PASSWORD']);
+// unset($_SERVER['MYSQL_DATABASE']);
+// unset($_SERVER['MYSQL_USER']);
+// unset($_SERVER['MYSQL_PASSWORD']);
