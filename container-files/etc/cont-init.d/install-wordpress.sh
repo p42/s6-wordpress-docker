@@ -22,7 +22,7 @@ else
     mkdir -p /etc/httpd/conf/vhosts
 fi
 
- cat > /etc/httpd/conf.d/wp_vhost <<EOF
+ cat > /etc/httpd/conf/vhosts/wp_vhost <<EOF
  <VirtualHost *:80>
     ServerAdmin nis@esu10.org
     DocumentRoot "/var/www/html/wordpress"
