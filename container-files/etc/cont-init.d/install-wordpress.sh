@@ -27,6 +27,7 @@ fi
     ServerAdmin nis@esu10.org
     DocumentRoot "/var/www/html/wordpress"
     ServerName $DOMAIN_NAME
+    ServerAlias *.$DOMAIN_NAME
     # ErrorLog /var/www/logs/ErrorLog
     # AccessLog /var/www/logs/AccessLog
  </VirtualHost>
@@ -59,7 +60,8 @@ else
 fi
 
 #Lastly, make sure that our webserver has write permissions.
+touch /var/www/html/wordpress/.htaccess
 chown nobody:apache -R /var/www/html/wordpress
 chmod 755 -R /var/www/html/wordpress
 chmod 775 -R /var/www/html/wordpress/wp-content
-
+chmod 664 /var/www/html/wordpress/.htaccess
