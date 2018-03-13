@@ -83,7 +83,7 @@ $table_prefix  = (($_SERVER['DATABASE_PREFIX'])? $_SERVER['DATABASE_PREFIX'] : '
  *
  * @link https://codex.wordpress.org/Debugging_in_WordPress
  */
-define('WP_DEBUG', true);
+define('WP_DEBUG', false);
 
 /* That's all, stop editing! Happy blogging. */
 
