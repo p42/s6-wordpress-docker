@@ -30,6 +30,12 @@ fi
     ServerAlias *.$DOMAIN_NAME
     # ErrorLog /var/www/logs/ErrorLog
     # AccessLog /var/www/logs/AccessLog
+    <Directory "/var/www/html/wordpress">
+        Options FollowSymLinks
+        AllowOverride All
+        Order allow,deny
+        Allow from all
+    </Directory>
  </VirtualHost>
  
 EOF
