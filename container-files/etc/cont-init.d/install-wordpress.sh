@@ -60,8 +60,15 @@ else
 fi
 
 #Lastly, make sure that our webserver has write permissions.
-touch /var/www/html/wordpress/.htaccess
-chown nobody:apache -R /var/www/html/wordpress
-chmod 755 -R /var/www/html/wordpress
-chmod 775 -R /var/www/html/wordpress/wp-content
+# We only need to do this once so make this a little more intelligent so that
+# it doesn't hang so long on restarts and upgrades.
+cd /var/www/html/wordpress
+
+# Find any files or directories not owned by nobody:apache and change them to that.
+find ./ -not -group apache -exec chown 'nobody:apache' '{}' \;
+# Change file permissions
+find ./ -not -path "*/wp-content/*" -not -type d -not -perm 755 -exec chmod '755' '{}' \;
+find wp-content -type d -not -path "*/.git/*" -not -name .git -not -perm 775 -exec chmod -R '775' '{}' \;
+echo "Finding anyone in the wp-content directory who is not 775."
+# Cleanup
 chmod 664 /var/www/html/wordpress/.htaccess

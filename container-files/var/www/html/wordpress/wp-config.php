@@ -28,7 +28,7 @@ define('DB_USER', (($_SERVER['MYSQL_USER'])?$_SERVER['MYSQL_USER']:'froot'));
 define('DB_PASSWORD', (($_SERVER['MYSQL_PASSWORD'])? $_SERVER['MYSQL_PASSWORD']: 'froot'));
 
 /** MySQL hostname */
-define('DB_HOST', 'mysql');
+define('DB_HOST', (($_SERVER['DATABASE_HOST'])? $_SERVER['DATABASE_HOST']:'mysql'));
 
 /** Database Charset to use in creating database tables. */
 define('DB_CHARSET', 'utf8mb4');
